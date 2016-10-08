@@ -41,8 +41,6 @@ public class ItemPool extends ArrayList<Object> {
         itemClassMap.put(type.TYPE_ID, itemClass);
     }
 
-
-
     /**
      * 设置监听事件
      *
