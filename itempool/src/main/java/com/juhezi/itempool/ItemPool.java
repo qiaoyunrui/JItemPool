@@ -58,6 +58,32 @@ public class ItemPool extends ArrayList<Object> {
         recyclerView.setAdapter(internalAdapter);
     }
 
+    public void addWithAction(Object o, Action zero2Nonzero) {
+        add(o);
+        if (size() == 1) {   //长度从0变到1
+            zero2Nonzero.onAction();
+        }
+        notifyItemInserted(size());   //显示插入动画
+    }
+
+    public void removeWithAction(int index, Action nonzero2Zero) {
+        remove(index);
+        if (size() == 0) {
+            nonzero2Zero.onAction();
+        }
+        notifyItemInserted(index);
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
+    }
+
+    @Override
+    public boolean addAll(Collection<?> c) {
+        return super.addAll(c);
+    }
+
     public void notifyDataSetChanged() {
         internalAdapter.notifyDataSetChanged();
     }

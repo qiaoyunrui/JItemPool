@@ -4,9 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
+import com.juhezi.itempool.Action
 import com.juhezi.itempool.ItemPool
 
 class MainActivity : AppCompatActivity() {
+
+    private var TAG = "MainActivity"
 
     private var mRvList: RecyclerView? = null
 
@@ -19,8 +23,14 @@ class MainActivity : AppCompatActivity() {
         itemPool?.addType(TestItem::class.java)
         itemPool?.addType(HeaderItem::class.java)
 
-        itemPool?.add(2)
-        itemPool?.add("HelloWorld1")
+        itemPool?.addWithAction(2, object : Action {
+            override fun onAction() {
+                Log.i(TAG, "HEHEHE")
+            }
+        })
+        itemPool?.addWithAction("HelloWorld1", {
+            Log.i(TAG,"What?")
+        })
         itemPool?.add("HelloWorld2")
         itemPool?.add("HelloWorld3")
         itemPool?.add("HelloWorld4")

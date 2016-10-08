@@ -20,7 +20,6 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.i(TAG, "onCreateViewHolder: " + mItemPool.getItemClass(viewType));
         Item item = newItem(mItemPool.getItemClass(viewType));
         return item.onCreateViewHolder(parent);
     }
