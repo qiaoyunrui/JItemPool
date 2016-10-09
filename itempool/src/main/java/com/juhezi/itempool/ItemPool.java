@@ -75,6 +75,17 @@ public class ItemPool extends ArrayList<Object> {
     }
 
     @Override
+    public boolean addAll(int index, Collection<?> c) {
+        return super.addAll(index, c);
+    }
+
+    public void resetData(Collection<?> c) {
+        clear();
+        addAll(c);
+        notifyDataSetChanged();
+    }
+
+    @Override
     public void clear() {
         super.clear();
     }
